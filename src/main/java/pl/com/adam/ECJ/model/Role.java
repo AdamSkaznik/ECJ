@@ -1,11 +1,15 @@
 package pl.com.adam.ECJ.model;
 
-import lombok.Data;
+import lombok.*;
 
 import javax.persistence.*;
 
 @Data
 @Entity
+@AllArgsConstructor
+@NoArgsConstructor
+@Getter
+@Setter
 @Table(name = "role")
 public class Role {
     @Id

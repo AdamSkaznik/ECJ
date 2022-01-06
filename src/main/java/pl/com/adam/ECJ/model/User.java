@@ -1,14 +1,22 @@
 package pl.com.adam.ECJ.model;
 
+import lombok.*;
 import org.hibernate.validator.constraints.Length;
 
 import javax.persistence.*;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotEmpty;
+import java.util.List;
+import java.util.Set;
 
+@Data
 @Entity
+@AllArgsConstructor
+@NoArgsConstructor
+@Getter
+@Setter
 @Table(name = "users")
-public class Users {
+public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "userId")
@@ -36,6 +44,9 @@ public class Users {
     @Column(name = "isActive")
     private boolean isActive;
 
-    private List<Role> roles;
+   @ManyToMany(cascade = CascadeType.MERGE)
+   @JoinTable(name = "user_role", joinColumns = @JoinColumn(name = "user_id"), inverseJoinColumns = @JoinColumn(name = "role_id"))
+   private Set<Role> roles;
+
 
 }
