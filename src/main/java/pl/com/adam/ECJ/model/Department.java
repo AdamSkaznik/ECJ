@@ -2,10 +2,7 @@ package pl.com.adam.ECJ.model;
 
 import lombok.*;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 @Data
 @Entity
@@ -20,4 +17,10 @@ public class Department {
     private int idDepartment;
     private String departmentName;
     private String departmentDescription;
+    @ManyToOne
+    @JoinColumn(name = "idUnit")
+    private Unit unit;
+    @ManyToOne
+    @JoinColumn(name = "idJournal")
+    private Journal journal;
 }

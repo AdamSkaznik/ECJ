@@ -6,21 +6,19 @@ import javax.persistence.*;
 import java.util.Set;
 
 @Data
-@Entity
 @AllArgsConstructor
 @NoArgsConstructor
 @Getter
 @Setter
-@Table(name = "unit")
-public class Unit {
+@Entity
+@Table(name = "journal")
+public class Journal {
+
     @Id
     @GeneratedValue
-    private int idUnit;
-    private String codeUnit;
-    private String shortName;
-    private String fullName;
-    private String codeParentUnit;
+    private Long idJournal;
+    private String description;
+    private boolean isActive;
     @OneToMany(mappedBy = "idDepartment")
     private Set<Department> departments;
-
 }
